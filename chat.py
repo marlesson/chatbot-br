@@ -6,15 +6,15 @@ import gensim
 import nltk
 from keras.models import load_model
 
-model = load_model('LSTM500.h5')
+model = load_model('LSTMBR_500.h5')
 # mod = gensim.models.Word2Vec.load('word2vec.bin');
 
-w2v = gensim.models.KeyedVectors.load_word2vec_format("wiki.pt.trigram.vector", binary=True)
+w2v = gensim.models.KeyedVectors.load_word2vec_format("cbow_s50.txt")
 
 while(True):
     x = input("Enter the message: ");
     
-    sentend=np.ones((400,), dtype=np.float32) 
+    sentend=np.ones((50,), dtype=np.float32) 
 
     sent=nltk.word_tokenize(x.lower())
     sentvec = [w2v[w] for w in sent if w in w2v.vocab]

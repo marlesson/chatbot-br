@@ -9,7 +9,8 @@ import pickle
 # w2v_en = models.Word2Vec.load('word2vec.bin');
 # w2v_br = models.KeyedVectors.load_word2vec_format("wiki.pt.trigram.vector", binary=True)
 
-w2v = models.KeyedVectors.load_word2vec_format("wiki.pt.trigram.vector", binary=True)
+#w2v = models.KeyedVectors.load_word2vec_format("wiki.pt.trigram.vector", binary=True)
+w2v = models.KeyedVectors.load_word2vec_format("cbow_s50.txt")
 
 file = open('conversation_br.json');
 data = json.load(file)
@@ -31,7 +32,7 @@ for i in range(len(x)):
     tok_x.append(nltk.word_tokenize(x[i].lower()))
     tok_y.append(nltk.word_tokenize(y[i].lower()))
     
-sentend = np.ones((400,),dtype=np.float32)
+sentend = np.ones((50,),dtype=np.float32)
 
 vec_x=[]
 for sent in tok_x:
